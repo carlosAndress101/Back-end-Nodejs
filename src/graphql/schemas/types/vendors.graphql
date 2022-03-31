@@ -1,0 +1,42 @@
+type Vendors {
+
+    _id:ID!
+    Name:String!
+    Lastname:String!
+    PhoneNumber:String!
+    NameOfCompany:String!
+    Sales:String!
+}
+
+input CreateVendors {
+
+    Name:String!
+    Lastname:String!
+    PhoneNumber:String!
+    NameOfCompany:String!
+    Sales:String!
+}
+
+input UpdateVendors {
+
+    _id:ID!
+    Name:String
+    Lastname:String
+    PhoneNumber:String
+    NameOfCompany:String
+    Sales:String
+}
+
+input DeleteVendors {
+    _id:ID!
+}
+
+type Query {
+    DVendors:[Vendors]!
+}
+
+type Mutation {
+    createVendors(vendors: CreateVendors): Vendors!
+    updateVendors(vendors: UpdateVendors): Vendors!
+    deleteVendors(vendors: DeleteVendors): String!
+}

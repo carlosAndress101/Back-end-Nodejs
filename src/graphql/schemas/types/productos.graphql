@@ -1,0 +1,42 @@
+type Productos {
+
+  _id: ID!
+  Name: String!
+  Ingredients: String!
+  Price: String!
+  Barcode: String!
+}
+
+input CreateProducts{
+
+  Name: String!
+  Ingredients: String!
+  price: String!
+  Barcode: String!
+}
+
+input UpdateProducts{
+
+  _id: ID!
+  Name:String
+  Ingredients:String
+  Price: String
+  Barcode: String
+}
+
+input DeleteProducts{
+  
+  _id: ID!
+}
+
+#needed for functioning.
+
+type Query {
+  Products: [Productos]!
+}
+
+type Mutation {
+  createProducts( producto:CreateProducts): Productos!
+  updateProducts( producto:UpdateProducts): Productos!
+  deleteProducts( producto:DeleteProducts): String!
+}

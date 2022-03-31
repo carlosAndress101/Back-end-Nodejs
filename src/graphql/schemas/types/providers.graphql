@@ -1,0 +1,37 @@
+type Provider {
+    code: ID!
+    Name: String!
+    Phonenumber: String!
+    city: String!
+    Direction:String!
+}
+
+input CreateProvider  {
+    code: ID!
+    Name: String!
+    Phonenumber: String!
+    city: String!
+    Direction:String!
+}
+
+input UpdateProvider {
+    code: ID!
+    Name: String
+    Phonenumber: String
+    city: String
+    Direction:String
+}
+
+input DeleteProvider{
+    code: ID!
+}
+
+type Query {
+    Providers: [Provider]!
+}
+
+type Mutation {
+    createProvider(provider: CreateProvider): Provider!
+    updateProvider(provider: UpdateProvider): Provider!
+    deleteProvider(provider: DeleteProvider): String!
+}

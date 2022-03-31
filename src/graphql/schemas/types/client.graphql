@@ -1,0 +1,48 @@
+type Client {
+
+  _id: ID!
+  Name: String!
+  Lastname: String!
+  Age: Int!
+  Phonenumber: String!
+  Email: String!
+  password: String!
+  city: String!
+}
+
+input CreateClient {
+
+  Name:String!
+  Lastname:String!
+  Age:Int!
+  Phonenumber:String!
+  Email: String!
+  password:String!
+  city:String!
+}
+
+input UpdateClient {
+
+  _id:ID!
+  Name:String
+  Lastname:String
+  Age:Int
+  Phonenumber:String
+  Email:String
+  password:String
+  city:String
+}
+
+input DeleteClient {
+  _id:ID!
+}
+
+type Query {
+  Clients: [Client]!
+}
+
+type Mutation {
+  createClient(client: CreateClient): Client!
+  updateClient(client: UpdateClient): Client!
+  deleteClient(client: DeleteClient): String!
+}
