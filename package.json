@@ -15,7 +15,7 @@
   "dependencies": {
     "@graphql-toolkit/file-loading": "^0.10.7",
     "@graphql-toolkit/schema-merging": "^0.10.7",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
