@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js -e js,graphql",
+    "lint": "eslint .",
     "start": "nodemon --exec babel-node src/server.js",
     "babel-node": "./node_modules/.bin/babel-node",
     "build": "babel src -d dist --source-maps"
@@ -21,6 +22,7 @@
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
+    "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas": "^1.7.8",
     "mongoose": "^6.2.6"
   },
@@ -30,6 +32,11 @@
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "dotenv": "^16.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
     "nodemon": "^2.0.15"
   }
 }

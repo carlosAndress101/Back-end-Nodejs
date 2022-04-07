@@ -1,12 +1,14 @@
-import express from "express";
-import DB_connet from './config/database/db'
+import express from 'express';
+import DB_connet from './config/database/db';
 import moduloEnv from './config/env/index';
 import bodyParser from "body-parser";
 import cors from "cors";
 import { graphqlHTTP } from "express-graphql";
 import types from "./graphql/schemas";
 import resolvers from './graphql/graphql-resolvers';
-import {buildSchema} from 'graphql';
+import { buildSchema } from 'graphql';
+import helpers from './Utils/index';
+
 
 //****************llamadas******************//
 moduloEnv.settingEnv();
@@ -22,11 +24,14 @@ app.use("/app", express.static("public"));
 
 app.use("/graphql", (req, res) =>
   graphqlHTTP({
-    schema, // types 
+    schema, // types
     rootValue: resolvers, //resolvers
     graphiql: true,
+    context: {
+      customer: helpers.tokenHelpers.getCustomerFromToken(req),
+    },
   })(req, res)
 );
 
 const PORT = process.env.PORT || 1500;
-app.listen(PORT, () => { console.log(`the server are running at the route http://localhost:${PORT}/graphql`);});
+app.listen(PORT, () => { console.log(`the server are running at the route http://localhost:${PORT}/graphql`); });

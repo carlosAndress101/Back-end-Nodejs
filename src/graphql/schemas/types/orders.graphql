@@ -9,6 +9,12 @@ input CreateOrder {
   dataOfOrder: String!
 }
 
+input FilterOrder {
+  _id: ID
+  NumberOfClient: String
+  dataOfOrder: String
+}
+
 input UpdateOrder {
   _id: ID!
   NumberOfClient: String
@@ -20,7 +26,7 @@ input DeleteOrder {
 }
 
 type Query {
-  Orders: [Order]!
+  Orders(filter: FilterOrder): [Order]!
 }
 
 type Mutation {

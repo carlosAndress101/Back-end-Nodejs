@@ -2,8 +2,7 @@ import Order from "../../../model/orders/Orders";
 
 const OrderResolver = {
 
-    Orders: async () => await Order.find(),
-
+    Orders: async ({ filter }) => await Order.find(filter),
     createOrder: async ({ order }) => {
 
         if (!order) {
