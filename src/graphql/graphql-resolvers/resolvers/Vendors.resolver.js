@@ -1,20 +1,19 @@
 import Vendors from '../../../model/vendors/Vendors';
 
 const VendorsResolver = {
-
+    /**GET VENDEDORES */
     DVendors: async () => await Vendors.find(),
 
+    /**VENDOR */
     createVendors: async ({vendors}) => {
-
         if(!vendors){
             throw new Error(`no esta llegado la data`);
         }
-
         try {
             const newVendors = new Vendors(vendors);
             return await newVendors.save();
         } catch (error) {
-            console.log(error);
+            console.log(`Problemas para crear provider revisar - ${error}`);
         }
     },
 
@@ -34,7 +33,7 @@ const VendorsResolver = {
         try {
             return await Vendors.findByIdAndUpdate({_id: vendors._id}, vendors, {new:true,});
         } catch (error) {
-            console.log(error);
+            console.log(`Problemas para actualizar provider revisar - ${error}`);
         }
     },
 
@@ -55,7 +54,7 @@ const VendorsResolver = {
             await Vendors.findByIdAndRemove({_id: vendors._id}, vendors);
             return `VENDORS WITH ID ${vendors._id} REMOVE`;
         } catch (error) {
-            console.log(error);
+            console.log(`Problemas para eliminar provider revisar - ${error}`);
         }
     },
 };

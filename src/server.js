@@ -10,7 +10,7 @@ import { buildSchema } from 'graphql';
 import helpers from './Utils/index';
 
 
-//****************llamadas******************//
+/**LLAMADAS DE EJECUCION */
 moduloEnv.settingEnv();
 var app = express();
 app.use(cors());

@@ -3,7 +3,7 @@ type Productos {
   _id: ID!
   Name: String!
   Ingredients: String!
-  Price: String!
+  Price:Int!
   Barcode: String!
 }
 
@@ -11,7 +11,7 @@ input CreateProducts{
 
   Name: String!
   Ingredients: String!
-  price: String!
+  Price:Int!
   Barcode: String!
 }
 
@@ -20,7 +20,7 @@ input UpdateProducts{
   _id: ID!
   Name:String
   Ingredients:String
-  Price: String
+  Price:Int
   Barcode: String
 }
 

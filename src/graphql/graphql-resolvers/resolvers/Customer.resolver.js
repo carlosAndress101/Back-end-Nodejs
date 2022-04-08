@@ -2,9 +2,11 @@ import Customer from '../../../model/customer/Customer';
 import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
 
+/**GET CUSTOMER */
 const CustomerResolver = {
   customers: async () => await Customer.find(),
 
+  /**LOGIN */
   authCustomer: async ({ customer }) => {
     const { Email, password } = customer;
     const customerExist = await Customer.findOne({ Email });
@@ -21,7 +23,7 @@ const CustomerResolver = {
     if (!isPasswordCorrect) {
       throw new Error('Wrong password, try again!');
     }
-
+    /**RETORNAR TOKEN */
     return {
       token: helpers.tokenHelpers.createToken(
         customerExist,

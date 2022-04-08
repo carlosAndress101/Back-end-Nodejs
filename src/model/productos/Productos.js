@@ -15,8 +15,8 @@ const Productos = mongoose.Schema({
     },
 
     Price: {
-      type: String,
-      required: true,
+      type: Number,
+      required:true,
     },
 
     Barcode: {

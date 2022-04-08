@@ -1,7 +1,10 @@
 import Productos from "../../../model/productos/Productos";
 
 const productoResolver = {
+  /**GET PRODUCTOS */
   Products: async () => await Productos.find(),
+
+  /**PRODUCT */
   createProducts: async ({ producto }) => {
     if (!producto) {
       throw new Error("Products are not arriving");
@@ -10,7 +13,7 @@ const productoResolver = {
       const newProductos = new Productos(producto);
       return await newProductos.save();
     } catch (error) {
-      console.log(error);
+      console.log(`Problema al crear producto revisar - ${error}`);
     }
   },
 
@@ -36,7 +39,7 @@ const productoResolver = {
         }
       );
     } catch (error) {
-      console.log(error);
+      console.log(`Problemas para actualizar provider revisar - ${error}`);
     }
   },
 
@@ -57,7 +60,7 @@ const productoResolver = {
       await Productos.findByIdAndRemove({ _id: producto._id }, producto);
       return `Products whith ID ${producto._id} delete`;
     } catch (error) {
-      console.log(error);
+      console.log(`Problemas para eliminar provider revisar - ${error}`);
     }
   },
 };
