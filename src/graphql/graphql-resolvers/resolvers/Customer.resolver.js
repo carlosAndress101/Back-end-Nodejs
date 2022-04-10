@@ -1,6 +1,7 @@
 import Customer from '../../../model/customer/Customer';
 import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
+import nodemail from 'nodemailer'
 
 /**GET CUSTOMER */
 const CustomerResolver = {
@@ -36,7 +37,7 @@ const CustomerResolver = {
   /* CUSTOMER*/
   createCustomer: async ({ customer }) => {
     /** Encriptacion */
-    const { Email, password } = customer;
+    const { Email, password, Name } = customer;
     const customerExist = await Customer.findOne({ Email });
 
     if (customerExist) {
@@ -49,6 +50,24 @@ const CustomerResolver = {
     try {
       const hash = await bcript.hash(password, 10);
       const newCustomer = new Customer({ ...customer, password: hash });
+      const Mail = process.env.mail;
+      const pass = process.env.pass
+      let transporter = nodemail.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: Mail, // generated ethereal user
+          pass: pass, // generated ethereal password
+        },
+      });
+      await transporter.sendMail({
+        from: `Soporte customers👻 <${Mail}>`, // sender address
+        to: Email, // list of receivers
+        subject: "Support Message ✔", // Subject line
+        html: `<h1>Hello ${Name}</h1>
+        <a href="https://ibb.co/ckZnzvN"><img src="https://i.ibb.co/jbQX75L/Welcome.jpg" alt="Welcome" border="0"></a>`, // html body
+      });
       return await newCustomer.save();
     } catch (error) {
       console.log(`Problemas en el resolver createCustomer revisa - ${error}`);
