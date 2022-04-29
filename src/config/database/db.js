@@ -4,9 +4,7 @@ import moduloEnv from "../env/index";
 moduloEnv.settingEnv();
 const connetDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_DATA, {
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_DATA);
     console.log("database connected successfully");
   } catch (error) {
     console.log("database fails to connect");

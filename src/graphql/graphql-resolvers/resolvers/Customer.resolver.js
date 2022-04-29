@@ -29,9 +29,49 @@ const CustomerResolver = {
       token: helpers.tokenHelpers.createToken(
         customerExist,
         process.env.JWT_SECRET,
-        '12hr',
+        '7hr',
       ),
     };
+  },
+
+  sendRecovery: async ({ customer }) => {
+    const { Email } = customer;
+    const customerExist = await Customer.findOne({ Email });
+
+    if (!customerExist) {
+      throw new Error('Customer does not exist ');
+    }
+    /**RETORNAR TOKEN */
+
+    const token = helpers.tokenHelpers.createToken(
+      customerExist,
+      process.env.JWT_SECRET,
+      '20min',
+    )
+    const link = `http://myfrontend.com/recovery?token=${token}`
+
+    try {
+      const Mail = process.env.mail;
+      const pass = process.env.pass
+      let transporter = nodemail.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: Mail, // generated ethereal user
+          pass: pass, // generated ethereal password
+        },
+      });
+      await transporter.sendMail({
+        from: `Soporte customers recovery <${Mail}>`, // sender address
+        to: Email, // list of receivers
+        subject: "Support Message Recovery ✔", // Subject line
+        html: `<b>Ingresa a este link =>${link}<b/>`
+      })
+
+    } catch (error) {
+      `Problemas en el resolver createCustomer sendRecovery revisa - ${error}`
+    }
   },
 
   /* CUSTOMER*/
@@ -44,7 +84,7 @@ const CustomerResolver = {
       throw new Error('Customer already exist ');
     }
 
-    if (!customer) {
+    if (!customerExist) {
       throw new Error('no esta llegando la data');
     }
     try {
