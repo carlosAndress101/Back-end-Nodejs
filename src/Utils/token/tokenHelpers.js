@@ -9,7 +9,7 @@ export const createToken = (customer, secret, expiresIn) =>{
     Phonenumber,
     Email,
     city,
-  } = customer;
+  } = customer || {};
 
   return jwt.sign(
     {

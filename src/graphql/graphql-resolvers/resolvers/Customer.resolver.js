@@ -3,7 +3,7 @@ import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
 import nodemail from 'nodemailer'
 import createSendMail from '../../../Utils/emails/sendRecovery';
-
+import changePassword from '../../../Utils/emails/changePassword';
 /**GET CUSTOMER */
 const CustomerResolver = {
   customers: async () => await Customer.find(),
@@ -39,6 +39,10 @@ const CustomerResolver = {
     createSendMail(customer)
     let Message = "Se envio"
     return Message;
+  },
+
+  changepassword: ({customer}) =>{
+    changePassword(customer);
   },
 
   /* CUSTOMER*/

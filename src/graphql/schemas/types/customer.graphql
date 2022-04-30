@@ -18,6 +18,11 @@ input SendRecovery{
   Email:String!
 }
 
+input changePassword{
+  token:String!
+  newpassword:String!
+}
+
 input FilterCustomer {
   _id:ID
   Name:String
@@ -65,6 +70,7 @@ type Query {
 type Mutation {
   authCustomer(customer: AuthCustomer): Token!
   sendRecovery(customer: SendRecovery): String!
+  changepassword(customer:changePassword):String!
   createCustomer(customer: CreateCustomer): Customer!
   updateCustomer(customer: UpdateCustomer): Customer!
   deleteCustomer(customer: DeleteCustomer): String!
