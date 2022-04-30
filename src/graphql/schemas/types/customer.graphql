@@ -5,7 +5,7 @@ type Customer {
   Age:Int!
   Phonenumber:String!
   Email:String!
-  password:String
+  password:String!
   city:String!
 }
 
@@ -64,7 +64,7 @@ type Query {
 
 type Mutation {
   authCustomer(customer: AuthCustomer): Token!
-  sendRecovery(customer: SendRecovery): Token!
+  sendRecovery(customer: SendRecovery): String!
   createCustomer(customer: CreateCustomer): Customer!
   updateCustomer(customer: UpdateCustomer): Customer!
   deleteCustomer(customer: DeleteCustomer): String!
