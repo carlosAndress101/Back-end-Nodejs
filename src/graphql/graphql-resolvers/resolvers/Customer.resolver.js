@@ -44,21 +44,14 @@ const CustomerResolver = {
   /* CUSTOMER*/
   createCustomer: async ({ customer }) => {
 
-    /**Encriptacion */
     const { Email, password, Name } = customer;
+    const customerExist = await Customer.findOne({ Email, });
 
-    const customerExist = await Customer.findOne({
-      Email,
-    });
+    if (customerExist) { throw new Error("Customer already exist "); }
+    if (!customer) { throw new Error("no esta llegando la data"); }
 
-    if (customerExist) {
-      throw new Error("Customer already exist ");
-    }
-
-    if (!customer) {
-      throw new Error("no esta llegando la data");
-    }
     try {
+      /**Encriptacion */
       const hash = await bcript.hash(password, 10);
       const newCustomer = new Customer({ ...customer, password: hash });
       const Mail = process.env.mail;
