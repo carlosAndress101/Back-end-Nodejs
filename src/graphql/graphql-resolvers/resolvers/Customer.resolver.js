@@ -41,9 +41,9 @@ const CustomerResolver = {
     return Message;
   },
 
-  changepassword: ({customer}) =>{
-    changePassword(customer);
-  },
+  // changepassword: ({customer}) =>{
+  //   changePassword(customer);
+  // },
 
   /* CUSTOMER*/
   createCustomer: async ({ customer }) => {
