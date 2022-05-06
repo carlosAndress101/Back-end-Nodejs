@@ -8,3 +8,53 @@ type Admin{
     password:String!
     city:String!
 }
+
+input AuthAdmin{
+    Email:String!
+    password:String!
+}
+
+input SendRecovery{
+    Email:String!
+}
+
+input CreateAdmin{
+    Name:String!
+    Lastname:String!
+    Age:Int!
+    Phonenumber:Int!
+    Email:String!
+    password:String!
+    city:String!
+}
+
+input UpdateAdmin{
+    _id:ID!
+    Name:String
+    Lastname:String
+    Age:Int
+    Phonenumber:Int
+    Email:String
+    password:String
+    city:String
+}
+
+input DeleteAdmin{
+    _id:ID!
+}
+
+type Token {
+  token: String!
+}
+
+type Query{
+    admins: [Admin]!
+}
+
+type Mutation{
+    authAdmin(admin: AuthAdmin):Token!
+    sendRecovery(admin: SendRecovery):String!
+    createAdmin(admin: CreateAdmin):Admin!
+    updateAdmin(admin: UpdateAdmin):Admin!
+    deleteAdmin(admin: DeleteAdmin):Admin!
+}
