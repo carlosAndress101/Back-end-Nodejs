@@ -1,0 +1,10 @@
+type Admin{
+    _id:ID!
+    Name:String!
+    Lastname:String!
+    Age:Int!
+    Phonenumber:Int!
+    Email:String!
+    password:String!
+    city:String!
+}
