@@ -3,7 +3,7 @@ import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
 import nodemail from 'nodemailer'
 import createSendMail from '../../../Utils/emails/sendRecovery';
-import changePassword from '../../../Utils/emails/changePassword';
+//import changePassword from '../../../Utils/emails/changePassword';
 /**GET CUSTOMER */
 const CustomerResolver = {
   customers: async () => await Customer.find(),
@@ -52,7 +52,7 @@ const CustomerResolver = {
     const customerExist = await Customer.findOne({ Email, });
 
     if (customerExist) { throw new Error("Customer already exist "); }
-    if (!customer) { throw new Error("no esta llegando la data"); }
+    if (!customer) { throw new Error("No esta llegando la data"); }
 
     try {
       /**Encriptacion */
@@ -92,7 +92,7 @@ const CustomerResolver = {
     });
 
     if (!currentCustomer) {
-      throw new Error('Client doesn\'t exist');
+      throw new Error('Customer doesnt exist');
     }
 
     try {
@@ -112,7 +112,7 @@ const CustomerResolver = {
     const currentCustomer = await Customer.findOne({ _id: customer._id });
 
     if (!currentCustomer) {
-      throw new Error('User doesn\'t exist');
+      throw new Error('User doesnt exist');
     }
 
     try {

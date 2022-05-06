@@ -1,5 +1,5 @@
 type Admin{
-    _id:ID!
+    _id: ID!
     Name:String!
     Lastname:String!
     Age:Int!

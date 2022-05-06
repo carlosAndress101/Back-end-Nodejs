@@ -1,4 +1,5 @@
-import * as tokenHelpers from './token/tokenHelpers'
+import * as tokenHelpers from './token/tokenHelpers';
+
 
 const helpers = {
   tokenHelpers
