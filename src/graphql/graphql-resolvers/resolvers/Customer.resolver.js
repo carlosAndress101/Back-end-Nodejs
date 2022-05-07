@@ -3,12 +3,14 @@ import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
 import nodemail from 'nodemailer'
 import createSendMail from '../../../Utils/emails/sendRecovery';
-//import changePassword from '../../../Utils/emails/changePassword';
-/**GET CUSTOMER */
+
+/*GET CUSTOMER*/
+
 const CustomerResolver = {
   customers: async () => await Customer.find(),
 
   /**LOGIN */
+
   authCustomer: async ({ customer }) => {
     const { Email, password } = customer;
     const customerExist = await Customer.findOne({ Email });
@@ -50,7 +52,6 @@ const CustomerResolver = {
 
     const { Email, password, Name } = customer;
     const customerExist = await Customer.findOne({ Email, });
-
     if (customerExist) { throw new Error("Customer already exist "); }
     if (!customer) { throw new Error("No esta llegando la data"); }
 
@@ -112,7 +113,7 @@ const CustomerResolver = {
     const currentCustomer = await Customer.findOne({ _id: customer._id });
 
     if (!currentCustomer) {
-      throw new Error('User doesnt exist');
+      throw new Error('Customer doesnt exist');
     }
 
     try {
