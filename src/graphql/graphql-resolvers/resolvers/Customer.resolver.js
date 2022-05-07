@@ -7,7 +7,7 @@ import createSendMail from '../../../Utils/emails/sendRecovery';
 /*GET CUSTOMER*/
 
 const CustomerResolver = {
-  customers: async () => await Customer.find(),
+  customers: async ({ filter }) => await Customer.find(filter),
 
   /**LOGIN */
 

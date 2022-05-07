@@ -64,7 +64,7 @@ type Token {
 }
 
 type Query {
-  customers: [Customer]!
+  customers(filter: FilterCustomer): [Customer]!
 }
 
 type Mutation {
