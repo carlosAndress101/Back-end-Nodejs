@@ -1,23 +1,23 @@
 type Order {
   _id: ID!
-  NumberOfClient: Float!
+  NumberOfClient: String!
   dataOfOrder: String!
 }
 
 input CreateOrder {
-  NumberOfClient: Float!
+  NumberOfClient: String!
   dataOfOrder: String!
 }
 
 input FilterOrder {
   _id: ID
-  NumberOfClient: Float
+  NumberOfClient: String
   dataOfOrder: String
 }
 
 input UpdateOrder {
   _id: ID!
-  NumberOfClient: Float
+  NumberOfClient: String
   dataOfOrder: String
 }
 

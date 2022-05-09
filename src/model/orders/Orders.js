@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Orders = mongoose.Schema(
     {
         NumberOfClient: {
-            type: Number,
+            type:String,
             required: true,
         },
         dataOfOrder: {
