@@ -33,6 +33,6 @@ app.use("/graphql", (req, res) =>
   })(req, res)
 );
 
-const DIRECT = process.env.DIRECTION || "http://localhost";
-const PORT = process.env.PORT || 1500;
+const DIRECT = process.env.DIRECTION;
+const PORT = process.env.PORT;
 app.listen(PORT, () => { console.log(`the server are running at the route ${DIRECT}:${PORT}/graphql`);});
