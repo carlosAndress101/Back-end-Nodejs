@@ -1,8 +1,9 @@
 import Admin from '../../../model/Admin/Admin';
 import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
+import createSendMail from '../../../Utils/emails/sendRecovery';
 
-/*GET ADMINISTRADOR*/
+/**GET ADMINISTRADOR*/
 const adminResolver = {
     admins: async () => Admin.find(),
 
@@ -22,6 +23,14 @@ const adminResolver = {
             ),
         };
     },
+    
+    /**ENVIO DE CORREO DE RECUPERACION*/
+    sendRecovery: ({admin}) =>{
+        createSendMail(admin);
+        let Message = "Mensaje enviado al admin";
+        return Message;
+    },
+
 
     /**CREAR ADMINISTRADOR*/
     createAdmin: async ({ admin }) => {

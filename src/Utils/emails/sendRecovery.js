@@ -1,22 +1,22 @@
-import Customer from '../../model/customer/Customer';
+import Admin from '../../model/Admin/Admin';
 import nodemail from 'nodemailer';
 import helpers from '../index'
 
-const createSendMail = async (customer) => {
+const createSendMail = async (admin) => {
     try {
-        const { Email } = customer ;
-        const customerExist = await Customer.findOne({Email});
+        const { Email } = admin ;
+        const adminExist = await Admin.findOne({Email});
         const Mail = process.env.mail;
         const pass = process.env.pass;
         
 
-        if (!customerExist) {
+        if (!adminExist) {
             throw new Error('no existe esta direccion de correo');
         }
 
         /**RETORNAR TOKEN */
         const token = helpers.tokenHelpers.createToken(
-            customerExist,
+            adminExist,
             process.env.JWT_SECRET,
             '20min',
         )

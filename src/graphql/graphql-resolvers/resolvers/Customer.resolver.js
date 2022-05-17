@@ -2,7 +2,7 @@ import Customer from '../../../model/customer/Customer';
 import bcript from 'bcryptjs';
 import helpers from '../../../Utils/index';
 import nodemail from 'nodemailer'
-import createSendMail from '../../../Utils/emails/sendRecovery';
+//import createSendMail from '../../../Utils/emails/sendRecovery';
 
 /*GET CUSTOMER*/
 
@@ -37,11 +37,11 @@ const CustomerResolver = {
     };
   },
 
-  sendRecovery: ({ customer }) => {
-    createSendMail(customer)
-    let Message = "Se envio"
-    return Message;
-  },
+  // sendRecovery: ({ customer }) => {
+  //   createSendMail(customer)
+  //   let Message = "Se envio al customer"
+  //   return Message;
+  // },
 
   // changepassword: ({customer}) =>{
   //   changePassword(customer);

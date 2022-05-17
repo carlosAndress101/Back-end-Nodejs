@@ -18,6 +18,11 @@ input SendRecovery{
     Email:String!
 }
 
+input changePassword{
+  token:String!
+  newpassword:String!
+}
+
 input CreateAdmin{
     Name:String!
     Lastname:String!
@@ -56,5 +61,5 @@ type Mutation{
     sendRecovery(admin: SendRecovery):String!
     createAdmin(admin: CreateAdmin):Admin!
     updateAdmin(admin: UpdateAdmin):Admin!
-    deleteAdmin(admin: DeleteAdmin):Admin!
+    deleteAdmin(admin: DeleteAdmin):String!
 }
