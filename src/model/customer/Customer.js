@@ -15,7 +15,7 @@ const Customer = mongoose.Schema(
     },
 
     Age: {
-      type: Number,
+      type: String,
       required: true,
     },
 

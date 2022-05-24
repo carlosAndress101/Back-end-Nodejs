@@ -2,7 +2,7 @@ type Customer {
   _id:ID!
   Name:String!
   Lastname:String!
-  Age:Int!
+  Age:String!
   Phonenumber:String!
   Email:String!
   password:String!
@@ -27,7 +27,7 @@ input FilterCustomer {
   _id:ID
   Name:String
   Lastname:String
-  Age:Int
+  Age:String
   Phonenumber:String
   Email:String
   password:String
@@ -37,7 +37,7 @@ input FilterCustomer {
 input CreateCustomer {
   Name:String!
   Lastname:String!
-  Age:Int!
+  Age:String!
   Phonenumber:String!
   Email:String!
   password:String
@@ -48,7 +48,7 @@ input UpdateCustomer {
   _id:ID!
   Name:String
   Lastname:String
-  Age:Int
+  Age:String
   Phonenumber:String
   Email:String
   password:String
