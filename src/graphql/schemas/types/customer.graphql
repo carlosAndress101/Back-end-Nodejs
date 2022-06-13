@@ -23,7 +23,7 @@ input changePassword{
   newpassword:String!
 }
 
-input FilterCustomer {
+input FindID{
   _id:ID
   Name:String
   Lastname:String
@@ -32,6 +32,10 @@ input FilterCustomer {
   Email:String
   password:String
   city:String
+}
+
+input FilterCustomer {
+  _id:ID
 }
 
 input CreateCustomer {
@@ -67,7 +71,10 @@ type Query {
   customers(filter: FilterCustomer): [Customer]!
 }
 
+
+
 type Mutation {
+  
   authCustomer(customer: AuthCustomer): Token!
   sendRecovery(customer: SendRecovery): String!
   changepassword(customer:changePassword):String!

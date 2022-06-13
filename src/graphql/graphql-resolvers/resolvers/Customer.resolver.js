@@ -8,8 +8,7 @@ import nodemail from 'nodemailer'
 
 const CustomerResolver = {
   customers: async ({ filter }) => await Customer.find(filter),
-
-  /**LOGIN */
+  /***LOGIN */
 
   authCustomer: async ({ customer }) => {
     const { Email, password } = customer;

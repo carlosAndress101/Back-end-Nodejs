@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const Productos = mongoose.Schema({
 
+    Imagen:{
+      type: String,
+      require: true,
+      trim: true,
+    },
     Name: {
       type: String,
       require: true,
